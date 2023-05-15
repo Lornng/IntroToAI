@@ -1,11 +1,17 @@
 public class Main{
     public static void main(String[] args){
         String filename = "test_HornKB.txt";
-        KnowledgeBase KB = new KnowledgeBase(filename);
-        TT tt = new TT();
+        KnowledgeBase kb = new KnowledgeBase(filename);
+        TT tt = new TT(kb);
 
 
 
-        tt.TT_ENTAILS(KB.getSymbols(), KB.getQuery());
+        boolean entailTrue = tt.TT_ENTAILS();
+        if(entailTrue){
+            int num_true = tt.getCounter();
+            System.out.println("YES: " + num_true);
+        }else{
+            System.out.println("NO");
+        }
     }
 }

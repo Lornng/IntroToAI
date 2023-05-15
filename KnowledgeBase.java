@@ -1,13 +1,13 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class KnowledgeBase {
     private String[] sentences;
     private String kbString = "";
     private String queryString = "";
-    private HashSet<String> symbols = new HashSet<>();
+    private ArrayList<String> symbols = new ArrayList<>();
 
     public KnowledgeBase(String filename){
         initialiseKB(filename);
@@ -64,11 +64,15 @@ public class KnowledgeBase {
         }
     }
 
-    public HashSet<String> getSymbols(){
+    public ArrayList<String> getSymbols(){
         return symbols;
     }
 
     public String getQuery(){
         return queryString;
+    }
+
+    public String[] getSentences(){
+        return sentences;
     }
 }
