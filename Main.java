@@ -13,7 +13,10 @@ public class Main{
         // }
 
         //Test forward chaining
-        FC fc = new FC(kb);
-        fc.FC_Check();
+        // FC fc = new FC(kb);
+        // fc.FC_Check();
+
+        BC bc = new BC(kb);
+        bc.BC_Check();
     }
 }
