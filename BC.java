@@ -21,8 +21,9 @@ public class BC {
     public void BC_Check(){
         goals.add(query);
         facts = Check_Facts(sentences, facts);
+        boolean cont = true;
 
-        while (!goals.isEmpty()){
+        while (!goals.isEmpty() || cont){
             System.out.println("Facts: " +facts);
             System.out.println("Goals: " +goals);
 
@@ -57,12 +58,16 @@ public class BC {
                             System.out.println(result);
 
                             goals.clear();
+
+                            cont = false;
                         }
                     }
                 }
             }
         }
-        System.out.println("Query not found!");
+        if(cont){
+            System.out.println("Query not found!");
+        }
     }
 
     public LinkedHashSet<String> Check_Facts(String[] sentences, LinkedHashSet<String> facts){

@@ -1,4 +1,4 @@
 TELL
 a; a => b; a&b => c;
 ASK
-c
+d
