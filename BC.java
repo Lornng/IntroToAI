@@ -23,9 +23,9 @@ public class BC {
         facts = Check_Facts(sentences, facts);
         boolean cont = true;
 
-        while (!goals.isEmpty() || cont){
-            System.out.println("Facts: " +facts);
-            System.out.println("Goals: " +goals);
+        while (!goals.isEmpty() && cont){
+            // System.out.println("Facts: " +facts);
+            // System.out.println("Goals: " +goals);
 
             String goal = goals.pop();
             result.add(goal);
@@ -52,13 +52,9 @@ public class BC {
                     if (rightside.equals(goal)){
                         if (Check_Left(left_symbols)){
                             facts.add(goal);
-                            System.out.println("Added: " + goal);
-
-                            System.out.print("sequence: ");
+                            System.out.print("YES: ");
                             System.out.println(result);
-
                             goals.clear();
-
                             cont = false;
                         }
                     }
@@ -66,7 +62,7 @@ public class BC {
             }
         }
         if(cont){
-            System.out.println("Query not found!");
+            System.out.println("No");
         }
     }
 
@@ -85,8 +81,6 @@ public class BC {
             if (!facts.contains(left)){
                 leftSymbolsCheck = false;
                 goals.push(left);
-                System.out.println("Pushed: " + left);
-                // System.out.println("2. " + goals);
             }
         }
 

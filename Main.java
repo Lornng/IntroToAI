@@ -1,7 +1,10 @@
 public class Main{
     public static void main(String[] args){
-        String filename = "Try.txt";
+        String filename = "test_HornKB.txt";
+        // test_HornKB.txt
         KnowledgeBase kb = new KnowledgeBase(filename);
+
+        System.out.println("-----Truth Table-----");
         TT tt = new TT(kb);
 
         boolean entailTrue = tt.TT_ENTAILS();
@@ -13,10 +16,12 @@ public class Main{
         }
 
         //Test forward chaining
-        // FC fc = new FC(kb);
-        // fc.FC_Check();
-
-        // BC bc = new BC(kb);
-        // bc.BC_Check();
+        System.out.println("-----Forward chaining-----");
+        FC fc = new FC(kb);
+        fc.FC_Check();
+        
+        System.out.println("-----Backward chaining-----");
+        BC bc = new BC(kb);
+        bc.BC_Check();
     }
 }

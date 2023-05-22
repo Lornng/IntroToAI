@@ -57,11 +57,11 @@
     
             // Check if query found after the loop
             if (queue.contains(query)) {
-                System.out.println("Query found!");
-                System.out.print("Sequence of the queue: ");
-                for (String item : queue) {
-                    System.out.print(item + "; ");
-                }
+                System.out.print("YES: ");
+                System.out.println(queue);
+                // for (String item : queue) {
+                //     System.out.print(item + "; ");
+                // }
             }
         }
         
