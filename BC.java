@@ -23,17 +23,17 @@ public class BC {
         goals.add(0, query);
         facts = Check_Facts(sentences, facts);
         boolean cont = true;
-        boolean stop = false;
 
         while (!goals.isEmpty() && cont){
             // System.out.println("Facts: " +facts);
             // System.out.println("Goals: " +goals);
-
+            // System.out.println("Goal size: "+ goals.size());
             String goal = goals.remove(0);
 
+            //stop infinite loop
             if(result.contains(goal)){
-                stop = true;
-                //System.out.println("XXXXXX");
+                cont = true;
+                // System.out.print("Infinite stop");
                 break;
             }
 
@@ -61,16 +61,21 @@ public class BC {
                     if (rightside.equals(goal)){
                         if (Check_Left(left_symbols)){
                             facts.add(goal);
-                            System.out.print("YES: ");
-                            System.out.println(result);
+                            if(goals.isEmpty()){
+                                System.out.print("YES: ");
+                                System.out.println(result);
+                                cont=false;
+                            }
+                            // System.out.print("YES: ");
+                            // System.out.println(result);
                             // goals.clear();
-                            cont = false;
+                            // cont = false;
                         }
                     }
                 }
             }
         }
-        if(cont || stop){
+        if(cont){
             System.out.println("NO");
         }
     }
@@ -90,11 +95,14 @@ public class BC {
             if (!facts.contains(left)){
                 leftSymbolsCheck = false;
                 goals.add(0, left);
+            }else{
+                result.add(left);
             }
         }
 
         if(leftSymbolsCheck){
             for(String left : left_symbols){
+                if(!result.contains(left))
                 result.add(left);
             }
         }
