@@ -6,7 +6,8 @@ public class BC {
     private String query;
     private String[] sentences;
     private LinkedHashSet<String> facts;
-    private Stack<String> goals;
+    private ArrayList<String> goals;
+    // private Stack<String> goals;
 
     private ArrayList<String> result;
 
@@ -14,22 +15,30 @@ public class BC {
         this.query = kb.getQuery();
         this.sentences = kb.getSentences();
         facts = new LinkedHashSet<>();
-        goals = new Stack<>();
+        goals = new ArrayList<>();
         result = new ArrayList<>();
     }
 
     public void BC_Check(){
-        goals.add(query);
+        goals.add(0, query);
         facts = Check_Facts(sentences, facts);
         boolean cont = true;
+        boolean stop = false;
 
         while (!goals.isEmpty() && cont){
             // System.out.println("Facts: " +facts);
             // System.out.println("Goals: " +goals);
 
-            String goal = goals.pop();
-            result.add(goal);
+            String goal = goals.remove(0);
 
+            if(result.contains(goal)){
+                stop = true;
+                //System.out.println("XXXXXX");
+                break;
+            }
+
+            result.add(goal);
+            
             for (String sentence : sentences){
 
                 ArrayList<String> left_symbols = new ArrayList<>();
@@ -54,15 +63,15 @@ public class BC {
                             facts.add(goal);
                             System.out.print("YES: ");
                             System.out.println(result);
-                            goals.clear();
+                            // goals.clear();
                             cont = false;
                         }
                     }
                 }
             }
         }
-        if(cont){
-            System.out.println("No");
+        if(cont || stop){
+            System.out.println("NO");
         }
     }
 
@@ -80,7 +89,7 @@ public class BC {
         for (String left : left_symbols){
             if (!facts.contains(left)){
                 leftSymbolsCheck = false;
-                goals.push(left);
+                goals.add(0, left);
             }
         }
 

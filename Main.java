@@ -1,6 +1,6 @@
 public class Main{
     public static void main(String[] args){
-        String filename = "test_HornKB.txt";
+        String filename = "Try2.txt";
         // test_HornKB.txt
         KnowledgeBase kb = new KnowledgeBase(filename);
 

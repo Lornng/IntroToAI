@@ -48,7 +48,7 @@
     
                 // Check if the current queue size is the same as the previous size
                 if (queue.size() == previousSize) {
-                    System.out.println("Query not found!");
+                    System.out.println("NO");
                     break;
                 }
     

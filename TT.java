@@ -19,10 +19,12 @@ public class TT {
         this.symbols = kb.getSymbols();
         this.query = kb.getQuery();
 
+        if(!symbols.contains(query)){
+            return false;
+        }
+
         createTT(symbols);
-
         boolean entailTrue = TT_CHECK_ALL(kb.getSentences());
-
         return entailTrue;
     }
 
