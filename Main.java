@@ -1,12 +1,13 @@
 public class Main{
     public static void main(String[] args){
-        String filename = "Try15.txt";
+        String filename = "Try2.txt";
         // test_HornKB.txt
         KnowledgeBase kb = new KnowledgeBase(filename);
 
-        GeneralKB gkb = new GeneralKB("Try2.txt");
+        // GeneralKB gkb = new GeneralKB("Try2.txt");
 
-        gkb.getParsedSentences();
+        // gkb.getParsedSentences();
+
         // System.out.println("-----Truth Table-----");
         // TT tt = new TT(kb);
 
@@ -18,7 +19,7 @@ public class Main{
         //     System.out.println("NO");
         // }
 
-        // //Test forward chaining
+        // // //Test forward chaining
         // System.out.println("-----Forward chaining-----");
         // FC fc = new FC(kb);
         // fc.FC_Check();
