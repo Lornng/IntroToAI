@@ -1,4 +1,4 @@
 TELL
-a=>b; a;
+(a <=> (c => ~d)) & b & (b => a);
 ASK 
-a
+d
