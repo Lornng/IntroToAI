@@ -99,7 +99,6 @@ public class TT {
 
     public boolean sentence_TV(ArrayList<String> sentence_symbols, int curr_row){
 
-
         //sentence contains only one symbol
         if(sentence_symbols.size() == 1){
             String toGet = sentence_symbols.get(0) + "[" + curr_row + "]";
