@@ -46,11 +46,11 @@ public class BC {
 
                     if (leftside.contains("&")) {
                         String[] clauses = leftside.split("&");
-                        String clause_1 = clauses[0];
-                        String clause_2 = clauses[1];
-    
-                        left_symbols.add(clause_1);
-                        left_symbols.add(clause_2);
+                        
+                        for(String clause : clauses){
+                            left_symbols.add(clause.trim());
+                        }
+
                     } else {
                         left_symbols.add(leftside);
                     }
@@ -72,6 +72,7 @@ public class BC {
             }
             //stop infinite loop
             if (queue.size() == previousSize){
+                System.out.println("Infinite loop");
                 break;
             }
             previousSize = queue.size();

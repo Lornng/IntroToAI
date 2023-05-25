@@ -35,6 +35,8 @@ public abstract class KB {
                     // System.out.println("detected");
 
                     queryString = scanner.nextLine();
+                    queryString = queryString.replace(" ", "");
+
                 }
             }
 

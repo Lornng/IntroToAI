@@ -57,13 +57,13 @@ public class GeneralKB extends KB{
             for(ArrayList<String> parsed : parsed_sentences){
                 Stack<Boolean> stack = new Stack<>();
 
-                System.out.println(parsed);
+                //System.out.println(parsed);
 
                 //loop through the individual parsed sentences
                 for(int i = 0; i < parsed.size(); i++){
                     String current = parsed.get(i);
 
-                    System.out.println(current);
+                    //System.out.println(current);
 
                     //if current is a symbol
                     if(symbols.contains(current)){
@@ -87,7 +87,7 @@ public class GeneralKB extends KB{
                         stack.push(result);
                     }
 
-                    System.out.print(stack);
+                    //System.out.print(stack);
                 }
 
                 boolean sentence_result = stack.pop();

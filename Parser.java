@@ -15,7 +15,7 @@ public class Parser {
         Stack<String> stack = new Stack<>();
         ArrayList<String> queue = new ArrayList<>();
 
-        System.out.println(sentence);
+        //System.out.println(sentence);
 
         for(int index = 0; index < sentence.length(); index++){
             char c = sentence.charAt(index);
