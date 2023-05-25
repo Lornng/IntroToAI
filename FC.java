@@ -57,11 +57,7 @@
     
             // Check if query found after the loop
             if (queue.contains(query)) {
-                System.out.print("YES: ");
-                System.out.println(queue);
-                // for (String item : queue) {
-                //     System.out.print(item + "; ");
-                // }
+                printQueue();
             }
         }
         
@@ -76,6 +72,10 @@
             if (allSymbolsContained){
                 queue.add(rightside);
             }
+        }
+
+        public void printQueue(){
+            System.out.println("YES: " + queue);
         }
         
     }
