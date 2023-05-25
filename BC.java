@@ -6,8 +6,7 @@ public class BC {
     private String[] sentences;
     private LinkedHashSet<String> facts, checkrightsymbols;
     private ArrayList<String> goals;
-
-    private ArrayList<String> result;
+    private ArrayList<String> queue;
 
     public BC (KnowledgeBase kb){
         this.query = kb.getQuery();
@@ -15,7 +14,7 @@ public class BC {
         facts = new LinkedHashSet<>();
         checkrightsymbols = new LinkedHashSet<>();
         goals = new ArrayList<>();
-        result = new ArrayList<>();
+        queue = new ArrayList<>();
     }
 
     public void BC_Check(){
@@ -25,23 +24,17 @@ public class BC {
         
         //check if facts contain the query
         if (facts.contains(query)){
-            result.add(0, query);
+            queue.add(0, query);
             // System.out.println("Facts contain query");
-            printResult();
+            printQueue();
             cont = false;
         }
         int previousSize = -1;
         while (!goals.isEmpty() && cont){
             String goal = goals.remove(0);
-
-            //stop infinite loop
-            // if(result.contains(goal)){
-            //     System.out.println("Infinite loop");
-            //     cont = true;
-            //     break;
-            // }
-
-            result.add(goal);
+            if(!queue.contains(goal)){
+                queue.add(goal);
+            }
             
             for (String sentence : sentences){
                 ArrayList<String> left_symbols = new ArrayList<>();
@@ -62,15 +55,14 @@ public class BC {
                         left_symbols.add(leftside);
                     }
                     if (rightside.equals(goal)){
-                        if (Check_Left(left_symbols)){
+                        if (checkLeft(left_symbols)){
                             facts.add(goal);
                             if(goals.isEmpty()){
-                                printResult();
+                                printQueue();
                                 cont=false;
                                 break;
                             }
                         }
-                    //if rightside doesnt contain the symbol
                     }
                 }
             }
@@ -79,10 +71,10 @@ public class BC {
                 break;
             }
             //stop infinite loop
-            // if (result.size() == previousSize){
-            //     System.out.println("Infinite loop!! NO");
-            // }
-            // previousSize = result.size();
+            if (queue.size() == previousSize){
+                break;
+            }
+            previousSize = queue.size();
         }
         if(cont){
             System.out.println("NO");
@@ -99,7 +91,7 @@ public class BC {
     }
 
     //Check the left hand side symbols 
-    public boolean Check_Left(ArrayList<String> left_symbols){
+    public boolean checkLeft(ArrayList<String> left_symbols){
         boolean leftSymbolsCheck = true;
         //add the left symbols that not part of facts to goals for check
         for (String left : left_symbols){
@@ -109,21 +101,21 @@ public class BC {
             }
             else{
                 //left symbols part of facts add into result
-                result.add(left);
+                if(!queue.contains(left)){
+                    queue.add(left);
+                }
             }
         }
-
         if(leftSymbolsCheck){
             for(String left : left_symbols){
-                if(!result.contains(left))
-                result.add(left);
+                if(!queue.contains(left))
+                queue.add(left);
             }
         }
-
         return leftSymbolsCheck;
     }
 
-    public void printResult(){
-        System.out.println("YES: " + result);
+    public void printQueue(){
+        System.out.println("YES: " + queue);
     }
 }
