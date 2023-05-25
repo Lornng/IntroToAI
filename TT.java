@@ -6,12 +6,12 @@ public class TT {
     private HashMap<String, Boolean> symbolMap = new HashMap<>();
     private Boolean[][] TT;
     private String query;
-    private KnowledgeBase kb;
+    private KB kb;
     private int numSymbols, rows;
     private int counter;
 
 
-    public TT(KnowledgeBase kb){
+    public TT(KB kb){
         this.kb = kb;
     }
 
@@ -147,24 +147,10 @@ public class TT {
 
                 TT[row][col] = truthValue;
 
-                // if(TT[row][col] == true){
-                //     System.out.print("T");
-                // }else if (TT[row][col] == false){
-                //     System.out.print("F");
-                // }
-
                 //assign truthValue to the symbol in the map
                 symbolMap.put(symbolString + "[" + row + "]", truthValue);
-
-                // boolean symbolValue = symbolMap.get(symbolString);
-                // System.out.println(symbolString + ": ");
-                // System.out.println(symbolValue ? "T" : "F");
-
             }
-            // System.out.println("");
         }
-        // System.out.println(symbols);
-        // System.out.println(symbolMap.get("b[3]"));
     }
 
     public int getCounter(){

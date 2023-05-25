@@ -9,7 +9,7 @@ public class BC {
 
     private ArrayList<String> result;
 
-    public BC (KnowledgeBase kb){
+    public BC (HornKB kb){
         this.query = kb.getQuery();
         this.sentences = kb.getSentences();
         facts = new LinkedHashSet<>();

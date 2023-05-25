@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class Parser {
@@ -12,9 +11,11 @@ public class Parser {
         operators.addAll(Arrays.asList("&", "=", "<", "~", "|", "(", ")"));
     }
 
-    public LinkedList<String> parseKB(String sentence){
+    public ArrayList<String> parseKB(String sentence){
         Stack<String> stack = new Stack<>();
-        LinkedList<String> queue = new LinkedList<>();
+        ArrayList<String> queue = new ArrayList<>();
+
+        System.out.println(sentence);
 
         for(int index = 0; index < sentence.length(); index++){
             char c = sentence.charAt(index);
@@ -58,8 +59,8 @@ public class Parser {
             }else{
                 queue.add(current);
             }
-            System.out.println("Queue" + queue);
-            System.out.println("Stack" + stack);
+            // System.out.println("Queue" + queue);
+            // System.out.println("Stack" + stack);
         }
 
         while(!stack.isEmpty()){

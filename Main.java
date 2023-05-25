@@ -1,19 +1,39 @@
+import java.util.ArrayList;
+
 public class Main{
     public static void main(String[] args){
-        String filename = "Try2.txt";
+        String filename = "test_HornKB.txt";
         // test_HornKB.txt
-        KnowledgeBase kb = new KnowledgeBase(filename);
+        // HornKB hKb = new HornKB(filename);
+        // System.out.println(hKb.getSymbols());
+        //TT tt_1 = new TT(hKb);
 
-        // GeneralKB gkb = new GeneralKB("Try2.txt");
+        GeneralKB gKb = new GeneralKB("Try2.txt");
+        gKb.createTT();
 
-        // gkb.getParsedSentences();
+        ArrayList<ArrayList<String>> results = gKb.getParsedSentences();
+
+        for(ArrayList<String> parsed : results){
+            System.out.println(parsed);
+        }
+
+        Boolean result = gKb.evaluatePostfix();
+
+        if(result){
+            System.out.println("YES: " + gKb.getCounter());
+        }else{
+            System.out.println("NO");
+        }
+
+        // System.out.println(gKb.getSymbols());
+        // gKb.getParsedSentences();
 
         // System.out.println("-----Truth Table-----");
         // TT tt = new TT(kb);
 
-        // boolean entailTrue = tt.TT_ENTAILS();
+        // boolean entailTrue = tt_1.TT_ENTAILS();
         // if(entailTrue){
-        //     int num_true = tt.getCounter();
+        //     int num_true = tt_1.getCounter();
         //     System.out.println("YES: " + num_true);
         // }else{
         //     System.out.println("NO");

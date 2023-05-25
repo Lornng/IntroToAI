@@ -7,7 +7,7 @@
         private String query;
         private String[] sentences;
         
-        public FC (KnowledgeBase kb){
+        public FC (HornKB kb){
             this.query = kb.getQuery();
             this.sentences = kb.getSentences();
             queue = new LinkedHashSet<>();
