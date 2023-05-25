@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main{
     public static void main(String[] args){
-        String filename = "Try2.txt";
+        String filename = "Try20.txt";
         // test_HornKB.txt
         HornKB hKb = new HornKB(filename);
         // System.out.println(hKb.getSymbols());
@@ -43,7 +43,7 @@ public class Main{
         fc.FC_Check();
         
         System.out.println("-----Backward chaining-----");
-        BC bc = new BC(hKb);
-        bc.BC_Check();
+        BC1 bc = new BC1(hKb);
+        bc.BC1_Check();
     }
 }

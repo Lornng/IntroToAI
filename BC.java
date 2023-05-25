@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 public class BC {
     private String query;
     private String[] sentences;
-    private LinkedHashSet<String> facts, checkrightsymbols;
+    private LinkedHashSet<String> facts, checkrightsymbols, visited;
     private ArrayList<String> goals;
     private ArrayList<String> queue;
 
@@ -13,6 +13,7 @@ public class BC {
         this.sentences = kb.getSentences();
         facts = new LinkedHashSet<>();
         checkrightsymbols = new LinkedHashSet<>();
+        visited = new LinkedHashSet<>();
         goals = new ArrayList<>();
         queue = new ArrayList<>();
     }
@@ -29,13 +30,14 @@ public class BC {
             printQueue();
             cont = false;
         }
-        int previousSize = -1;
+        
         while (!goals.isEmpty() && cont){
             String goal = goals.remove(0);
             if(!queue.contains(goal)){
                 queue.add(goal);
+                
             }
-            
+
             for (String sentence : sentences){
                 ArrayList<String> left_symbols = new ArrayList<>();
                 if (sentence.contains("=>")) {
@@ -50,7 +52,6 @@ public class BC {
                         for(String clause : clauses){
                             left_symbols.add(clause.trim());
                         }
-
                     } else {
                         left_symbols.add(leftside);
                     }
@@ -70,12 +71,6 @@ public class BC {
                 System.out.println("Rightside no this symbol");
                 break;
             }
-            //stop infinite loop
-            if (queue.size() == previousSize){
-                System.out.println("Infinite loop");
-                break;
-            }
-            previousSize = queue.size();
         }
         if(cont){
             System.out.println("NO");
