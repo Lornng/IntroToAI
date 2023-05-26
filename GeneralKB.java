@@ -51,6 +51,12 @@ public class GeneralKB extends KB{
 
     public boolean evaluatePostfix(){
         counter = 0;
+
+        //if query doesn't exist in KB
+        if(!symbols.contains(getQuery())){
+            return false;
+        }
+
         //loop through all rows of the TT 
         for(int row = 0; row < this.rows; row++){
             boolean kbTrue = true;

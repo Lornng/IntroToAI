@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        String method = "bc";
-        String filename = "Try2_1.txt";
+        String method = "gkb";
+        String filename = "gkbTry1.txt";
 
         switch (method) {
             case "tt":
