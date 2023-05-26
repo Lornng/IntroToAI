@@ -4,6 +4,10 @@ public class HornKB extends KB{
         super(filename);
     }
 
+    public void prints(){
+        System.out.println("fewfe");
+    }
+
     // private String[] sentences;
     // private String kbString = "";
     // private String queryString = "";

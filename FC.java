@@ -7,12 +7,13 @@
         private String query;
         private String[] sentences;
         
-        public FC (HornKB kb){
+        public FC (KB kb){
             this.query = kb.getQuery();
             this.sentences = kb.getSentences();
             queue = new LinkedHashSet<>();
         }
 
+        //check the forward chaining algorithm
         public void FC_Check() {
             int previousSize = -1; // Previous queue size
             while (!queue.contains(query)) {
@@ -61,6 +62,7 @@
             }
         }
         
+        //checking the left side symbols if all is contained by queue add the rightside into queue
         public void Check_symbols(ArrayList<String> left_symbols, String rightside, String sentence){
             boolean allSymbolsContained = true;
             for(String left : left_symbols){

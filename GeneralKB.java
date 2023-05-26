@@ -14,7 +14,8 @@ public class GeneralKB extends KB{
     public GeneralKB(String filename){
         super(filename);
         parser = new Parser();
-        parsedSentences();
+        parseSentences();
+        createTT();
     }
 
     public ArrayList<ArrayList<String>> getParsedSentences(){
@@ -41,7 +42,7 @@ public class GeneralKB extends KB{
         }
     }
 
-    public void parsedSentences(){
+    public void parseSentences(){
         for(String sentence : super.getSentences()){
             ArrayList<String> parsed_sentence = parser.parseKB(sentence);
             parsed_sentences.add(parsed_sentence);
@@ -171,27 +172,5 @@ public class GeneralKB extends KB{
     public int getCounter(){
         return this.counter;
     }
-    // public void evaluatePostfix(String postfix){
-    //     Stack<Boolean> stack = new Stack<>();
 
-    //     for(int index = 0; index < postfix.length(); index++){
-    //         char c = postfix.charAt(index);
-    //         // String current = "" + c;  
-
-    //         if(Character.isLetter(c)){
-    //             //get its boolean value from TT and push onto stack
-
-    //         }else if(c == '~'){
-    //             //negate the next char and store in stack + index++
-
-    //         }else{
-    //             //it is an operator
-    //             boolean operand1 = stack.pop();
-    //             boolean operand2 = stack.pop();
-    //             boolean result = evaluateOperation(operand1, operand2, c);
-    //         }
-    //     }
-    // }
-
-   
 }

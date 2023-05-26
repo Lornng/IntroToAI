@@ -1,4 +1,6 @@
 TELL
-~(a <=> (c => ~d)) & b & (b => a); c; ~f || g;
+~~~(a <=> (c => ~d)) & b & (b => a); c; ~f || g;
 ASK
 d
+TT please
+I got YES:6

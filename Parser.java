@@ -37,14 +37,26 @@ public class Parser {
                     continue;
                 }
             
+
                 //check for precedence 
                 if(current.equals("~")){
-                    queue.add(current);
-                }else if(!stack.isEmpty() && precedence.contains(stack.peek()) && !precedence.contains(current)){
+                    
+                    if(queue.isEmpty()){
+                        queue.add(current);
+                    }
+                    else if(!queue.isEmpty() && !queue.get(queue.size()-1).equals("~")){
+                        queue.add(current);
+                    }
+                    //queue.add(current);
+                }
+                //check for disjunction and conjunction 
+                else if(!stack.isEmpty() && precedence.contains(stack.peek()) && !precedence.contains(current)){
                     String popped = stack.pop();
                     queue.add(popped);
                     stack.push(current);
-                }else{
+                }
+                //lowest precedence so push onto stack
+                else{
                     stack.push(current);
                 }
 

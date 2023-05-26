@@ -1,55 +1,49 @@
-import java.util.ArrayList;
+public class Main {
+    public static void main(String[] args) {
 
-public class Main{
-    public static void main(String[] args){
-        String filename = "Try20.txt";
-        // test_HornKB.txt
-        //HornKB hKb = new HornKB(filename);
-        // System.out.println(hKb.getSymbols());
-        //TT tt_1 = new TT(hKb);
+        String method = "bc";
+        String filename = "Try2_1.txt";
 
-        GeneralKB gKb = new GeneralKB("Try2.txt");
-        // gKb.createTT();
+        switch (method) {
+            case "tt":
+                HornKB kb = new HornKB(filename);
+                TT tt = new TT(kb);
 
-        // // for(ArrayList<String> parsed : results){
-        // //     System.out.println(parsed);
-        // // }
+                boolean entailTrue = tt.TT_ENTAILS();
+                if (entailTrue) {
+                    int num_true = tt.getCounter();
+                    System.out.println("YES: " + num_true);
+                } else {
+                    System.out.println("NO");
+                }
+                break;
 
-        Boolean result = gKb.evaluatePostfix();
+            case "fc":
+                HornKB kb1 = new HornKB(filename);
+                FC fc = new FC(kb1);
+                fc.FC_Check();
+                break;
 
-        if(result){
-            System.out.println("YES: " + gKb.getCounter());
-        }else{
-            System.out.println("NO");
+            case "bc":
+                HornKB kb2 = new HornKB(filename);
+                BC bc = new BC(kb2);
+                bc.BC_Check();
+                break;
+
+            case "gkb":
+                GeneralKB gkb = new GeneralKB(filename);
+                Boolean result = gkb.evaluatePostfix();
+
+                if (result) {
+                    System.out.println("YES: " + gkb.getCounter());
+                } else {
+                    System.out.println("NO");
+                }
+                break;
+
+            default:
+                System.out.println("Invalid method entered.");
+                break;
         }
-
-        // System.out.println(gKb.getSymbols());
-        // gKb.getParsedSentences();
-
-        // System.out.println("-----Truth Table-----");
-        // //TT tt = new TT(hKb);
-
-        // boolean entailTrue = tt_1.TT_ENTAILS();
-        // if(entailTrue){
-        //     int num_true = tt_1.getCounter();
-        //     System.out.println("YES: " + num_true);
-        // }else{
-        //     System.out.println("NO");
-        // }
-
-        // // //Test forward chaining
-        // System.out.println("-----Forward chaining-----");
-        // FC fc = new FC(hKb);
-        // fc.FC_Check();
-        
-<<<<<<< Updated upstream
-        System.out.println("-----Backward chaining-----");
-        BC1 bc = new BC1(hKb);
-        bc.BC1_Check();
-=======
-        // System.out.println("-----Backward chaining-----");
-        // BC bc = new BC(hKb);
-        // bc.BC_Check();
->>>>>>> Stashed changes
     }
 }
