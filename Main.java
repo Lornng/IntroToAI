@@ -1,8 +1,8 @@
 public class Main {
     public static void main(String[] args) {
 
-        String method = "gkb";
-        String filename = "gkbTry1.txt";
+        String method = args[0];
+        String filename = args[1];
 
         switch (method) {
             case "tt":
